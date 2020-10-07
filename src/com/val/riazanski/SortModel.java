@@ -1,8 +1,6 @@
 package com.val.riazanski;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,9 +35,9 @@ public class SortModel {
         }
         //поменяли местами ключ значение
         HashMap<Integer,Character> swap = new HashMap<>();
-        for (int i = 0; i < entries.size(); i++) {
+        for (Map.Entry<Character, Integer> entry : entries) {
             //Character character = entries.get(i).getKey();
-            swap.put(entries.get(i).getValue(),entries.get(i).getKey());
+            swap.put(entry.getValue(), entry.getKey());
         }
         System.out.println("поменяли местами ключ значение ");
         swap.forEach((k,v) -> System.out.println(k + " " + v));
@@ -50,18 +48,16 @@ public class SortModel {
         System.out.println("опять поменяли местами ключ значение" +
                 '\n' + "печать при заполнении МАР");
         StringBuilder[] listValue = new StringBuilder[1000];
-        for (int i = 0; i < listValue.length; i++) {
-            listValue[i] = new StringBuilder("");
-        }
         HashMap<StringBuilder,Character> spin = new HashMap<>();
         for (int i = 0; i < entries.size(); i++) {
+            listValue[i] = new StringBuilder("");
             listValue[i].append(entries.get(i).getValue().toString());
             spin.put(listValue[i],entries.get(i).getKey());
             System.out.println(listValue[i].toString() + " " + entries.get(i).getKey());
         }
         System.out.println("после заполнения, что видим в MAP");
         spin.forEach((k,v) -> System.out.println(k.toString() + " " + v));
-        System.out.println("к вопросу про итератор - как обходит forEach при проходе по MAP");
+        System.out.println("к вопросу про итератор - как обходит forEach при печати MAP");
 
     }
     public static void main(String[] args) {
